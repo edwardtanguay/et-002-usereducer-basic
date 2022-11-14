@@ -15,8 +15,8 @@ interface IAction {
 	payload: number 
 }
 
-const initialState = {
-	count: 999
+const initialState: IState = {
+	count:0 
 }
 
 const reducer = (state: IState, action: IAction) => {
@@ -38,7 +38,12 @@ function App() {
 	return (
 		<div className="App">
 			<h1>Info Site</h1>
-			<p>Count: {state.count}</p>
+			<p className="theCount">Count: {state.count}</p>
+			<div className="buttonArea">
+				<button>-</button>
+				<button>+</button>
+			</div>
+
 
 		</div>
 	);

@@ -7,4 +7,19 @@ body {
 	h1 {
 		color: rgb(209, 168, 85);
 	}
+
+	p.theCount {
+		font-size: 1.5rem;
+		color: yellow;
+	}
+
+	.buttonArea {
+		display: flex;
+		gap: .5rem;
+
+		button {
+			font-size: 2rem;
+			width: 3rem;
+		}
+	}
 }
