@@ -1,0 +1,9 @@
+- .. handle errors
+	- INPUT: "sdf"
+		- "sdf" is not a number
+	- INPUT: ""
+		- Please type in a number. 
+	- INPUT: (ok)
+		- empty input field
+	- Reset buttons
+		- empty input field	
