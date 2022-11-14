@@ -31,12 +31,18 @@ const reducer = (state: IState, action: IAction) => {
 	switch (action.type) {
 		case IActionType.INCREMENT:
 			_state.count++;
+			_state.newCount = '';
+			_state.message = '';
 			break;
 		case IActionType.DECREMENT:
 			_state.count--;
+			_state.newCount = '';
+			_state.message = '';
 			break;
 		case IActionType.RESET:
 			_state.count = action.payload;
+			_state.newCount = '';
+			_state.message = '';
 			break;
 		case IActionType.UPDATENEWCOUNT:
 			_state.newCount = action.payload;
