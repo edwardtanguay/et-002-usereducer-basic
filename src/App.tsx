@@ -42,7 +42,16 @@ const reducer = (state: IState, action: IAction) => {
 			_state.newCount = action.payload;
 			break;
 		case IActionType.SAVENEWCOUNT:
-			_state.count = state.newCount;
+			if (state.newCount.trim() === '') {
+				_state.message = 'Please type in a number.';
+			} else {
+				const num = Number(state.newCount);
+				if (!isNaN(num)) {
+					_state.count = num;
+				} else {
+					_state.message = `"${state.newCount}" is not a number.`;
+				}
+			}
 			break;
 	}
 	return _state;
