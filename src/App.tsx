@@ -11,6 +11,7 @@ enum IActionType {
 	DECREMENT = 'DECREMENT',
 	RESET = 'RESET',
 	UPDATENEWCOUNT = 'UPDATENEWCOUNT',
+	SAVENEWCOUNT = 'SAVENEWCOUNT',
 }
 
 interface IAction {
@@ -20,7 +21,7 @@ interface IAction {
 
 const initialState: IState = {
 	count: 0,
-	newCount: 10
+	newCount: 0
 }
 
 const reducer = (state: IState, action: IAction) => {
@@ -38,6 +39,9 @@ const reducer = (state: IState, action: IAction) => {
 		case IActionType.UPDATENEWCOUNT:
 			_state.newCount = action.payload;
 			break;
+		case IActionType.SAVENEWCOUNT:
+			_state.count = state.newCount
+			break;
 	}
 	return _state;
 }
@@ -50,8 +54,8 @@ function App() {
 			<h1>Info Site</h1>
 			<p className="theCount">Count: {state.count}</p>
 			<div className="buttonArea">
-				<button onClick={() => dispatch({ type: IActionType.DECREMENT, payload: 0})}>-</button>
-				<button onClick={() => dispatch({ type: IActionType.INCREMENT, payload: 0})}>+</button>
+				<button onClick={() => dispatch({ type: IActionType.DECREMENT, payload: null})}>-</button>
+				<button onClick={() => dispatch({ type: IActionType.INCREMENT, payload: null})}>+</button>
 			</div>
 			<div className="buttonAreaExtra">
 				<button onClick={() => dispatch({type: IActionType.RESET, payload: 0})}>Reset to 0</button>
@@ -60,7 +64,7 @@ function App() {
 			</div>
 			<div className="buttonAreaExtra">
 				<input value={state.newCount} onChange={(e) => dispatch({type: IActionType.UPDATENEWCOUNT, payload:e.target.value})} /> 
-				<button>Save</button>
+				<button onClick={() => dispatch({type: IActionType.SAVENEWCOUNT, payload: null})}>Save</button>
 				</div>
 		</div>
 	);
