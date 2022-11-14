@@ -40,11 +40,9 @@ function App() {
 			<h1>Info Site</h1>
 			<p className="theCount">Count: {state.count}</p>
 			<div className="buttonArea">
-				<button>-</button>
-				<button>+</button>
+				<button onClick={() => dispatch({ type: IActionType.DECREMENT, payload: 0})}>-</button>
+				<button onClick={() => dispatch({ type: IActionType.INCREMENT, payload: 0})}>+</button>
 			</div>
-
-
 		</div>
 	);
 }
