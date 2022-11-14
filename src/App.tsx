@@ -3,21 +3,24 @@ import './App.scss';
 
 interface IState {
 	count: number;
+	newCount: number;
 }
 
 enum IActionType {
 	INCREMENT = 'INCREMENT',
 	DECREMENT = 'DECREMENT',
-	RESET = 'RESET'
+	RESET = 'RESET',
+	UPDATENEWCOUNT = 'UPDATENEWCOUNT',
 }
 
 interface IAction {
 	type: IActionType,
-	payload: number 
+	payload: any
 }
 
 const initialState: IState = {
-	count:0 
+	count: 0,
+	newCount: 10
 }
 
 const reducer = (state: IState, action: IAction) => {
@@ -31,6 +34,9 @@ const reducer = (state: IState, action: IAction) => {
 			break;
 		case IActionType.RESET:
 			_state.count = action.payload;
+			break;
+		case IActionType.UPDATENEWCOUNT:
+			_state.newCount = action.payload;
 			break;
 	}
 	return _state;
@@ -52,6 +58,10 @@ function App() {
 				<button onClick={() => dispatch({type: IActionType.RESET, payload: 100})}>Reset to 100</button>
 				<button onClick={() => dispatch({type: IActionType.RESET, payload: -100})}>Reset to -100</button>
 			</div>
+			<div className="buttonAreaExtra">
+				<input value={state.newCount} onChange={(e) => dispatch({type: IActionType.UPDATENEWCOUNT, payload:e.target.value})} /> 
+				<button>Save</button>
+				</div>
 		</div>
 	);
 }
